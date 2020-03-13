@@ -1,0 +1,25 @@
+<span *ngIf="label" [attr.aria-label]="label" id="label">{{label}}</span>
+
+<ul aria-labelledby="label" role="radiogroup">
+
+  <li *ngFor="let option of options"
+       role="radio"
+       tabindex="0"
+       [attr.aria-label]="option.ariaLabel">
+  
+    <label>
+      <input type="radio"
+             [name]="groupId"
+             [(ngModel)]="value"
+             (ngModelChange)="onValueChanged($event)"
+             [value]="option.value">
+      
+      <span class="button {{option.icon ? 'icon' : ''}}">
+        <i *ngIf="option.icon" class="mdi mdi-{{option.icon}}"></i>
+        {{option.label}}
+      </span>
+    </label>
+
+  </li>
+
+</ul>

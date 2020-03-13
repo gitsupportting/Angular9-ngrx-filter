@@ -1,0 +1,47 @@
+<div class="diagnose-side-filter-panel">
+    <div class="panel-overlay" (click)="cancelPanel()"></div>
+    <div class="filter-panel">
+        <div class="header"> 
+            <h3>Add it to the regression tests</h3>
+            <span (click)="cancelPanel()">✖ CLOSE</span>
+        </div>
+
+        <hr/>
+
+        <div class="content"> 
+            <p>How should it be labelled</p>
+            <div class="topic-item" *ngFor="let topic of processedData.topics"> 
+                <i class="material-icons">{{topic.icon}}</i>
+                <span class="text">{{topic.name}}</span>
+                <div class="number-pane"> 
+                    <span 
+                        *ngFor="let grade of riskGrade" 
+                        [ngClass]="(grade.value == topic.value ? 'selected ' : '') + grade.id" 
+                        appTooltip="{{grade.tooltip}}"
+                        placement="bottom"
+                        delay="500"
+                        (click)="selectTopicGradeItem(topic, grade)"
+                    >
+                        {{grade.label}}
+                    </span>
+                </div>
+            </div>
+            <div class="select-items"> 
+                <div class="select-item"> 
+                    <p>Add Topics</p>
+                    <app-select class="medium mr-10" [items]="topicList" [multiselect]="true" (doSelect)="selectTopics($event)"></app-select>
+                </div>
+                 <div class="select-item"> 
+                    <p>Wrong Language?</p>
+                    <app-select class="medium mr-10" [items]="languageList" (doSelect)="selectLanguage($event)"></app-select>
+                </div>
+            </div>
+            <p>Leave a comment</p>
+            <textarea placeholder="Type your Comment (Optional)"></textarea>
+            <div> 
+                <button class="bg-green black mr-10" (click)="applyFilter($event)">Apply</button>
+                <button class="bg-black" (click)="cancelPanel()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

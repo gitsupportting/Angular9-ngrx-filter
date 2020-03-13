@@ -1,0 +1,52 @@
+<nav class='subnav'>
+
+  <label class="collapse-toggle disabled">
+    <input type="checkbox" (click)="toggleCollapse($event)" (change)="0">
+  </label>
+  
+  <ul class="top-level-nav">
+    <li>
+      <a routerLink="/">
+        <ng-container i18n>Home</ng-container>
+        <i class="material-icons">expand_more</i>
+      </a>
+    </li>
+    <li>
+      <a>
+        <ng-container i18n>Item 1</ng-container>
+        <i class="material-icons">expand_more</i>
+      </a>
+    </li>
+    <li>
+      <a>
+        <ng-container i18n>Item 2</ng-container>
+        <i class="material-icons">expand_more</i>
+      </a>
+    </li>
+    <li>
+      <a>
+        <ng-container i18n>Item 3</ng-container>
+        <i class="material-icons">expand_more</i>
+      </a>
+    </li>
+    <li>
+      <a>
+        <ng-container i18n>Item 4</ng-container>
+        <i class="material-icons">expand_more</i>
+      </a>
+    </li>
+    <li>
+      <a>
+        <ng-container i18n>Item 5</ng-container>
+        <i class="material-icons">expand_more</i>
+      </a>
+    </li>
+  </ul>
+  
+  <app-subnav-help></app-subnav-help>
+  
+  <app-api-button></app-api-button>
+  
+  <app-admin-button></app-admin-button>
+
+</nav>

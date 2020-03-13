@@ -1,0 +1,14 @@
+<span class="app-select" (mouseenter)="isOpenList = true;" (mouseleave)="isOpenList = false;">
+    <span class="label-text"> 
+        {{displayType == 'id' ? _selectedItem.id : _selectedItem.label}}
+    </span>
+    <i class="material-icons" *ngIf="isOpenList">expand_less</i>
+    <i class="material-icons" *ngIf="!isOpenList">expand_more</i>
+    <ul class="item-list" *ngIf="isOpenList">
+        <li *ngFor="let item of items" [ngClass]="{'item': true, 'selected': item.id == _selectedItem.id}" (click)="onClick(item)"> 
+            <app-checkbox [(ngModel)]="isSelected" *ngIf="multiselect" class="mr-10"></app-checkbox>
+            {{ item.label }}
+            <i class="material-icons" *ngIf="item.id == _selectedItem.id && !multiselect">check</i>
+        </li>
+    </ul>
+</span>

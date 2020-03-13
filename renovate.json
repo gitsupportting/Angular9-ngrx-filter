@@ -1,0 +1,33 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "schedule": [
+    "after 10am and before 4pm every weekday"
+  ],
+  "timezone": "America/Vancouver",
+  "separateMinorPatch": true,
+  "gitLabAutomerge": true,
+  "patch": {
+    "automerge": true
+  },
+  "pin": {
+    "automerge": true
+  },
+  "lockFileMaintenance": {
+    "automerge": true
+  },
+  "packageRules": [
+    {
+      "packageNames": [
+        "aws-sdk"
+      ],
+      "extends": [
+        ":automergeMinor"
+      ],
+      "schedule": [
+        "on the first day of the month at 10:00"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+<header class="main">
+
+  <app-main-logo></app-main-logo>
+  
+  <app-main-search></app-main-search>
+  
+  <app-client-picker [selectedClient]="this.userService.preferences.lastClientId"
+                 (clientChanged)="onUserChangedClient($event)"
+  ></app-client-picker>
+
+  <app-language-picker [selectedLanguage]="this.userService.preferences.language"
+                   (languageChanged)="onUserChangedLanguage($event)"
+  ></app-language-picker>
+  
+  <app-flyout></app-flyout>
+  
+  <app-user-flyout></app-user-flyout>
+
+</header>

@@ -1,0 +1,17 @@
+<div class="page-details-pane">
+  <div class="left-section"> 
+      <h3 class="title">{{title}}</h3>
+      <app-breadcrumb></app-breadcrumb>
+  </div>
+  <div class="right-section"> 
+    <span class="refresh">
+      <i class="material-icons">cached</i>
+    </span>
+    <app-select class="small mr-10" [items]="languageItems" [selectedItem]="defaultLanguageItem" [displayType]="'id'" (doSelect)="changeLanguage($event)"></app-select>
+    <app-select class="medium mr-10" [items]="chatItems" (doSelect)="changeChatType($event)"></app-select>
+    <app-select class="medium mr-10" [items]="accountTypeItems" (doSelect)="changeAccountType($event)"></app-select>
+    <span>
+        <app-toggle [checked]="isDeeperAnalysis" [label]="'Deeper Analysis'" (toggled)="toggleDeeperAnalysis($event)"></app-toggle>
+    </span>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+:host {
+  margin-left: 2em;
+  margin-right: 2em;
+  flex: 1;
+}
+
+/* TODO: Figure out responsive sizing */
+input[type='search'] {
+
+  width: 100%;
+  padding: 0.7em 1em;
+  border: none;
+  background: transparent;
+  border: solid 2px transparent;
+  border-left: solid 2px var(--input-focus-border-color);
+  position: relative;
+  color: var(--input-text-color);
+  transition: border-radius ease-in-out 150ms, border-color ease-in-out 250ms;
+
+  &::placeholder {
+    color: var(--input-text-placeholder);
+  }
+
+  &:focus {
+    outline: none;
+    border: var(--input-focus-border);
+    border-radius: var(--input-text-radius);
+  }
+}

@@ -1,0 +1,36 @@
+:host {
+  flex: 1;
+}
+
+.apps-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 2em;
+  margin: 0;
+  padding: 0;
+  &.grid-columns-5 {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+.apps-list > li {
+  list-style: none;
+  a {
+    background-color: var(--dashboard-item-bg);
+    min-height: 10em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background-color var(--transition-speed) var(--transition-timing);
+    &:focus, &:hover {
+      background-color: var(--dashboard-item-focus-bg);
+    }
+    i.material-icons {
+      margin-bottom: 0.75em;
+      font-size: 30px;
+      color: var(--accent-1);
+    }
+  }
+}

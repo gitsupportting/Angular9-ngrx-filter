@@ -1,0 +1,6 @@
+{
+  "extends": "@twohatsecurity",
+  "parserOptions": {
+    "sourceType": "module"
+  }
+}

@@ -1,0 +1,11 @@
+version: '2.1'
+
+services:
+
+  modtools-app:
+    image: modtools-app
+    build: .
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3001:3001

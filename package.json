@@ -1,0 +1,123 @@
+{
+  "name": "modtools-app",
+  "version": "0.0.1",
+  "description": "ModTools App",
+  "sourceType": "module",
+  "scripts": {
+    "build": "ng build --prod --output-path=dist",
+    "e2e": "ng e2e",
+    "eslint-ci": "esint . --config=.eslintrc.json --format junit --output-file results/eslint.junit.xml",
+    "eslint": "eslint . --config=.eslintrc.json",
+    "lint-staged": "lint-staged",
+    "lint": "ng lint",
+    "ng": "ng",
+    "pretest": "lint-staged",
+    "start": "ng serve",
+    "test": "ng test || exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/two-hat-public/modtools-app.git"
+  },
+  "keywords": [
+    "modtools",
+    "mod tools",
+    "community sift",
+    "two hat"
+  ],
+  "contributors": [
+    {
+      "name": "Shane Lawrence",
+      "email": "shane.lawrence@2hatsecurity.com"
+    },
+    {
+      "name": "Chris Priebe",
+      "email": "chris.priebe@2hatsecurity.com"
+    },
+    {
+      "name": "Alex Draper",
+      "email": "alex.draper@2hatsecurity.com"
+    }
+  ],
+  "author": "Two Hat Security <info@twohat.com>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://gitlab.com/two-hat-public/modtools-app/issues"
+  },
+  "homepage": "https://gitlab.com/two-hat-public/modtools-app",
+  "dependencies": {
+    "@angular/animations": "9.0.5",
+    "@angular/common": "9.0.5",
+    "@angular/compiler": "9.0.5",
+    "@angular/core": "9.0.5",
+    "@angular/forms": "9.0.5",
+    "@angular/localize": "9.0.5",
+    "@angular/platform-browser": "9.0.5",
+    "@angular/platform-browser-dynamic": "9.0.5",
+    "@angular/router": "9.0.5",
+    "@awaitjs/express": "0.4.0",
+    "@babel/core": "7.8.6",
+    "@babel/node": "7.8.4",
+    "@babel/preset-env": "7.8.6",
+    "@mdi/font": "4.9.95",
+    "@ngrx/effects": "^9.0.0",
+    "@ngrx/router-store": "^9.0.0",
+    "@ngrx/store": "^9.0.0",
+    "@sentry/browser": "5.13.0",
+    "lodash": "4.17.15",
+    "material-design-icons": "3.0.1",
+    "rxjs": "6.5.4",
+    "tslib": "1.11.1",
+    "xng-breadcrumb": "5.0.1",
+    "zone.js": "0.10.2"
+  },
+  "devDependencies": {
+    "@angular-builders/custom-webpack": "9.0.0",
+    "@angular-devkit/build-angular": "0.900.5",
+    "@angular/cli": "9.0.5",
+    "@angular/compiler-cli": "9.0.5",
+    "@angular/language-service": "9.0.5",
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/config-conventional": "8.3.4",
+    "@semantic-release/changelog": "5.0.0",
+    "@semantic-release/exec": "5.0.0",
+    "@semantic-release/git": "9.0.0",
+    "@semantic-release/gitlab": "6.0.2",
+    "@twohatsecurity/eslint-config": "0.0.8",
+    "@types/jasmine": "3.5.7",
+    "@types/jasminewd2": "2.0.8",
+    "@types/node": "13.7.7",
+    "codelyzer": "5.2.1",
+    "eslint": "6.8.0",
+    "eslint-plugin-import": "2.20.1",
+    "husky": "4.2.3",
+    "jasmine-core": "3.5.0",
+    "jasmine-spec-reporter": "4.2.1",
+    "karma": "4.4.1",
+    "karma-chrome-launcher": "3.1.0",
+    "karma-coverage-istanbul-reporter": "2.1.1",
+    "karma-jasmine": "3.1.1",
+    "karma-jasmine-html-reporter": "1.5.2",
+    "lint-staged": "10.0.8",
+    "postcss-import": "12.0.1",
+    "postcss-loader": "3.0.0",
+    "postcss-scss": "2.0.0",
+    "protractor": "5.4.3",
+    "puppeteer": "2.1.1",
+    "ts-node": "8.6.2",
+    "tslint": "6.0.0",
+    "typescript": "3.7.5"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  }
+}

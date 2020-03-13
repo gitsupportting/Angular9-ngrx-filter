@@ -1,0 +1,215 @@
+.diagnose-side-filter-panel {
+    .panel-overlay {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
+        background-color: #000000a9;
+    }
+
+    .filter-panel {
+        position: fixed;
+        top: 0px;
+        bottom: 0px;
+        right: 0px;
+        width: 600px;
+        background-color: #1b1f20;
+        padding: 20px;
+
+        .header {
+            display: flex;
+            align-items: center;
+
+            h3 {
+                flex: 1;
+                font-weight: normal;
+                margin: 0px;
+            }
+
+            span {
+                cursor: pointer;
+            }
+        }
+
+        .content {
+            p {
+                margin-top: 30px;
+                font-size: 12px;
+            }
+
+            textarea {
+                width: 100%;
+                height: 150px;
+                background: #292e2f;
+                padding: 15px;
+                border: none;
+                resize: none;
+            }
+
+            button {
+                width: 105px;
+                margin-top: 20px;
+            }
+
+            .topic-item {
+                padding: 10px;
+                background: #111212;
+                display: flex;
+                border-radius: 4px;
+                align-items: center;
+                margin-top: 15px;
+
+                i {
+                    font-size: 16px;
+                    color: #636d73;
+                    margin-right: 10px;
+                }
+
+                .text {
+                    flex: 1;
+                    font-size: 14px;
+                }
+
+                .number-pane {
+                    display: flex;
+
+                    span {
+                        width: 38px;
+                        height: 38px;
+                        font-size: 12px;
+                        color: #999999;
+                        text-align: center;
+                        line-height: 38px;
+                        background: #292e2e;
+                        margin-right: 5px;
+
+                        &:first-child {
+                            border-top-left-radius: 4px;
+                            border-bottom-left-radius: 4px;
+                        }
+
+                        &:last-child {
+                            border-top-right-radius: 4px;
+                            border-bottom-right-radius: 4px;
+                            margin-right: 0px;
+                        }
+                    }
+                                
+                    span.always_safe {
+                        &.selected {
+                            background-color: #7ed321;
+                            color: black;
+                        }
+
+                        &:hover {
+                            background-color: #7ed321;
+                            color: black;
+                        }
+                    }
+                    span.very_safe {
+                        &.selected {
+                            background-color: #04e762;
+                            color: black;
+                        }
+
+                        &:hover {
+                            background-color: #04e762;
+                            color: black;
+                        }
+                    }
+                    span.grey {
+                        &.selected {
+                            background-color: #b0b7a1;
+                            color: black;
+                        }
+
+                        &:hover {
+                            background-color: #b0b7a1;
+                            color: black;
+                        }
+                    }
+                    span.questionable {
+                        &.selected {
+                            background-color: #d8b122;
+                            color: black;
+                        }
+
+                        &:hover {
+                            background-color: #d8b122;
+                            color: black;
+                        }
+                    }
+                    span.unknown {
+                        &.selected {
+                            background-color: #3577ef;
+                            color: black;
+                        }
+
+                        &:hover {
+                            background-color: #3577ef;
+                            color: black;
+                        }
+                    }
+                    span.mild {
+                        &.selected {
+                            background-color: #e86c47;
+                            color: black;
+                        }
+
+                        &:hover {
+                            background-color: #e86c47;
+                            color: black;
+                        }
+                    }
+                    span.offensive {
+                        &.selected {
+                            background-color: #f17105;
+                            color: black;
+                        }
+
+                        &:hover {
+                            background-color: #f17105;
+                            color: black;
+                        }
+                    }
+                    span.obscene {
+                        &.selected {
+                            background-color: #ed0423;
+                            color: black;
+                        }
+
+                        &:hover {
+                            background-color: #ed0423;
+                            color: black;
+                        }
+                    }
+                }
+            }
+
+            .select-items {
+                display: flex;
+
+                .select-item {
+                    flex: 1;
+
+                    select {
+                        width: 100%;
+                        background-color: #111312;
+                        border: none;
+                        height: 38px;
+                    }
+
+                    &:first-child {
+                        padding-right: 10px;
+                    }
+
+                    &:last-child {
+                        padding-left: 10px;
+                    }
+                }
+            }
+        }
+
+    }
+}

@@ -1,0 +1,229 @@
+/*
+  Sift Tools base stylesheet
+  Default colour scheme is dark
+  Should also provide styles for light mode, though, to suit user preference.
+*/
+
+// Import common vars
+@import '_vars.less';
+@import '_a11y.less';
+@import '~material-design-icons/iconfont/material-icons.css';
+@import '~@mdi/font/css/materialdesignicons.css';
+@import './assets/less/font-awesome.less';
+@import './app/directives/directive.less';
+
+/* TODO: Create scheme(s) for colour vision impairments */
+
+/* Core styles */
+/* TODO: Separate common base styles to a shared CSS library */
+body {
+  background-color: var(--page-bg);
+  color: var(--text-color);
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+body, button, input {
+  // Use Comic Sans as a fallback to make sure we notice if the fonts fail to load.
+  font-family: 'Nunito', 'Comic Sans MS';
+  font-kerning: auto;
+  font-variant-numeric: tabular-nums;
+  -webkit-font-feature-settings: "lnum";
+  -moz-font-feature-settings: "lnum";
+  -ms-font-feature-settings: "lnum";
+  -o-font-feature-settings: "lnum";
+  font-feature-settings: "lnum";
+}
+
+/* Button styles */
+.button {
+  background: var(--button-bg);
+  color: var(--button-fg);
+  border: none;
+  padding: var(--button-padding);
+  border-radius: var(--button-radius);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  &.primary {
+    background: var(--button-primary-bg);
+    color: var(--button-primary-fg);
+  }
+  &.subtle {
+    background: var(--button-subtle-bg);
+    color: var(--button-subtle-fg);
+  }
+  &.icon {
+    padding: 0.25em 0.5em;
+    i.mdi { font-size: 24px; }
+  }
+  &:focus {
+    outline: none;
+    box-shadow: var(--button-focus-ring);
+  }
+}
+
+button {
+  &:extend(.button);
+  &.primary { &:extend(.button.primary); }
+  &.subtle { &:extend(.button.subtle); }
+  &.icon { &:extend(.button.icon); }
+  &:focus {
+    &:extend(.button:focus);
+  }
+}
+
+// Horizontal rule
+hr {
+  width: 100%;
+  height: 0;
+  border: 0;
+  border-top: solid 2px var(--hr-color);
+}
+
+app-root {
+  padding: 0;
+  display: grid;
+  grid-template-areas: "header"
+                       "nav"
+                       "core";
+  grid-template-rows: auto;
+  grid-template-columns: 1fr;
+  column-gap: 2em;
+  // row-gap: 1em;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 0;
+  padding: 0.5em 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--link-color);
+}
+
+a img {
+  border: none;
+}
+
+.xng-breadcrumb-item, .xng-breadcrumb-separator, .xng-breadcrumb-trail {
+  color: var(--link-color) !important; //TODO: !important is bad. Style properly.
+}
+
+.disabled {
+  opacity: 0.75;
+  cursor: not-allowed;
+  user-select: none;
+}
+
+nav.root {
+  grid-area: nav;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .search-box {
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 1em;
+
+    & > * {
+      margin-left: 1em;
+    }
+
+  }
+}
+
+select {
+  background: var(--input-select-bg);
+  padding: var(--input-select-padding);
+  border: var(--input-border);
+  border-radius: var(--input-select-radius);
+  color: var(--input-select-fg);
+  &::placeholder {
+    color: var(--input-select-placeholder);
+  }
+  &:focus {
+    outline: none;
+    border: var(--input-focus-border);
+  }
+}
+
+/* GRID LAYOUT HELPERS */
+.span-2 {
+  grid-column: span 2;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.bg-dark-blue {
+  background-color: #58c1b8 !important;
+}
+
+.bg-green {
+  background-color: #04e762 !important;
+}
+
+.bg-black {
+  background-color: black !important;
+}
+
+.white {
+  color: white !important;
+}
+
+.black {
+  color: black !important;
+}
+
+hr {
+  border-top: 1px solid #414d55 !important;
+  margin: 20px 0px;
+}
+
+.pane {
+  padding: 15px 10px;
+  background-color: #111212;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  // box-shadow: inset 0 0 5px grey; 
+  // border-radius: 10px;
+  background-color: #2e373a;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #111212;
+  border-radius: 10px;
+  border: 2px solid #2e373a;
+  height: 40px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #111212; 
+}
+/* RESPONSIVE LAYOUT HELPERS */
+@media screen and (max-width: var(--breakpoint-tablet-max)) {
+  .hide-tablet { display: none }
+  .show-tablet { display: initial }
+}

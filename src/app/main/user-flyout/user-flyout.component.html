@@ -1,0 +1,9 @@
+<button *ngIf="currentUser" class="disabled">
+  <img src="{{ currentUser.photos[0].value }}"
+       alt="Profile picture for {{ currentUser.displayName }}"
+       *ngIf="currentUser.photos && currentUser.photos.length"
+       aria-hidden="true" />
+  <span>{{ currentUser.name.givenName }}</span>
+</button>
+
+<button *ngIf="!currentUser"><i class="mdi mdi-account-off"></i></button>

@@ -1,0 +1,14 @@
+<section class="app-grid">
+
+  <ol class="apps-list grid-columns-{{_gridColumns}}">
+    
+    <li *ngFor="let app of _apps">
+      <a routerLink="{{app.url}}">
+        <i class="material-icons">{{app.icon}}</i>
+        {{app.text}}
+      </a>
+    </li>
+
+  </ol>
+
+</section>

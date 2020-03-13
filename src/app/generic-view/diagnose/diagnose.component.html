@@ -1,0 +1,98 @@
+<div class="diagnose" *ngIf="isLoaded">
+    <div class="left-pane"> 
+        <div class="display-text-section"> 
+            <div class="processed-item" *ngFor="let item of processedData.filteredTextArray"> 
+                <span class="original-text">{{item.originalText}}</span>
+                <span class="processed-text" [ngStyle]="{'background-color': item.topics[0].color}" (mouseenter)="item.isDetailPanel = true;" (mouseleave)="item.isDetailPanel = false;">{{item.solution}}
+                    <div class="precessed-group-text-dropdown" *ngIf="item.isDetailPanel"> 
+                        <ul> 
+                            <li> 
+                                <div class="item-wrapper">
+                                    <div class="text-info-wrapper"> 
+                                        <div class="text-info-item"> 
+                                            <span class="num-text mr-10" [ngStyle]="{'background-color': item.solutionToken.topics[0].color}">{{item.solutionToken.topics[0].value}}</span>
+                                            <span class="group-text mr-10">{{item.solutionToken.text}}</span>
+                                            <span class="lang">{{item.solutionToken.language}}</span>
+                                        </div>
+                                        <div class="text-info-item" *ngFor="let token of item.tokens"> 
+                                            <span class="num-text mr-10" [ngStyle]="{'background-color': token.topics[0].color}">{{token.topics[0].value}}</span>
+                                            <span class="group-text mr-10">{{token.text}}</span>
+                                            <span class="lang">{{token.language}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="topic-info-wrapper"> 
+                                        <div class="topic-info-item"> 
+                                            <app-topic-info class="mr-10" [small]="true" [topic]="tokenTopic" *ngFor="let tokenTopic of item.solutionToken.topics"></app-topic-info>
+                                        </div>
+                                        <div class="topic-info-item" *ngFor="let token of item.tokens"> 
+                                            <app-topic-info class="mr-10" [small]="true" [topic]="tokenTopic" *ngFor="let tokenTopic of token.topics"></app-topic-info>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </li>
+                            <li> 
+                                <app-topic-info [topic]="item.topics[0]"></app-topic-info>
+                            </li>
+                        </ul>
+                    </div>
+                </span>
+                
+            </div>
+        </div>
+        <div class="deeper-analysis" *ngIf="isDeeperAnalysis"> 
+            <div> 
+                <h3 class="sub-label">Spelling Mistakes</h3>
+                <div class="pane"> 
+                    <span class="text" *ngFor="let failing of processedData.failingFragments">{{failing.originalText}}</span>
+                </div>
+            </div>
+            <div> 
+                <h3 class="sub-label">What caused which tag</h3>
+                <div class="pane" *ngFor="let failing of processedData.failingFragments"> 
+                    <app-topic-info class="topic-info" *ngFor="let failingTopic of failing.topics" [topic]="failingTopic"></app-topic-info>
+                    <span class="text">{{failing.normalized}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right-pane"> 
+        <span class="text"> 
+            {{processedData.text}}
+        </span>
+        <hr/>
+        <div class="info-section"> 
+            <div class="info-topics"> 
+                <label class="dark-text">Topics</label>
+                <app-topic-info class="topic-info" *ngFor="let item of processedData.topics" [topic]="item"></app-topic-info>
+            </div>
+            <div class="info-policy-guides"> 
+                <label class="dark-text">Policy Guides</label>
+                <div [ngClass]="'info-item ' + (checkPolicyGroupCriteria(policy_guide) ? 'green' : 'red')" *ngFor="let policy_guide of policyGuides"> 
+                    <i class="material-icons" *ngIf="checkPolicyGroupCriteria(policy_guide)">thumb_up</i>
+                    <i class="material-icons" *ngIf="!checkPolicyGroupCriteria(policy_guide)">thumb_down</i>
+                    <span class="text">{{policy_guide.name}}</span>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="ai-section"> 
+            <p class="dark-text">AI Prediction</p>
+            <div class="ai-item" *ngFor="let item of processedData.predictions"> 
+                <span class="lang">{{item.id.split('_')[1]}}</span>
+                <span class="progress"> 
+                    <app-percent-bar [percent]="item.value"></app-percent-bar>
+                </span>
+                <span class="percent">{{item.value}}%</span>
+            </div>
+        </div>
+        <hr/>
+        <div class="actions"> 
+            <button (click)="showFilterPanel()">Escalate</button>
+            <button class="bg-dark-blue black">Gerkin Test</button>
+            <button class="bg-green black">Create Rule</button>
+        </div>
+    </div>
+</div>
+
+<app-diagnose-side-filter-panel *ngIf="isFilterPanel" (doCancel)="cancelFilterPanel($event)" (doApply)="applyFilter($event)" [processedData]="processedData"></app-diagnose-side-filter-panel>

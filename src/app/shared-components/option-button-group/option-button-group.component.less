@@ -1,0 +1,75 @@
+:host {
+  display: flex;
+  justify-content: evenly-spaced;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+}
+
+// @deprecated
+// Use of ::ng-deep is deprecated but no viable alternatives
+// are evident yet. This may break in the future.
+:host ::ng-deep {
+  
+  #label {
+    margin-right: var(--button-spacing);
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    display: inline-block;
+    
+    &:focus {
+      outline: none;
+      box-shadow: var(--button-focus-ring);
+    }
+  }
+
+  li + li {
+    margin-left: var(--button-spacing-tight);
+  }
+
+  li {
+    cursor: pointer;
+    user-select: none;
+  
+    &:first-of-type span {
+      border-radius: var(--button-radius) 0 0 var(--button-radius);
+    }
+  
+    &:last-of-type span {
+      border-radius: 0 var(--button-radius) var(--button-radius) 0;
+    }
+
+    &:not(:first-of-type):not(:last-of-type) span {
+      border-radius: 0;
+    }
+  
+    input + span {
+      transition-property: background-color, opacity;
+      transition-duration: var(--transition-speed);
+      transition-timing-function: var(--transition-timing);
+      padding: var(--button-padding);
+      background: var(--button-bg);
+      color: var(--button-fg);
+      display: block;
+      cursor: pointer;
+    }
+
+    input {
+      display: none;
+  
+      &:checked + span {
+        background-color: var(--button-active-bg);
+        color: var(--button-active-fg);
+      }
+    }
+  
+  }
+
+}
